@@ -4,11 +4,11 @@ import './App.scss';
 
 // Add sample data
 const samplePhoto = {
-  imageSource: "/image-1-Full.jpeg",
-  username: "John Smith",
+  imageSource: "/Image-1-Full.jpeg",
+  username: "John Example",
   profile: "/profile-1.jpg",
   location: {
-    city: "Toronto",
+    city: "Montreal",
     country: "Canada"
   }
 };

@@ -7,6 +7,26 @@
   pointer-events: none;
 }
 
+.App {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.photo-list__item {
+  border-radius: 8px;
+  margin-bottom: 24px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.photo-list__image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
