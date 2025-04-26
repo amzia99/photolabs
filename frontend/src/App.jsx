@@ -15,12 +15,7 @@ const samplePhoto = {
 
 const App = () => (
   <div className="App">
-    <PhotoListItem 
-      imageSource={samplePhoto.imageSource}
-      username={samplePhoto.username}
-      profile={samplePhoto.profile}
-      location={samplePhoto.location}
-    />
+    <PhotoListItem photo={samplePhoto} />
   </div>
 );
 

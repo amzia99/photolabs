@@ -1,6 +1,14 @@
 import React from 'react';
+import './PhotoListItem.scss';
 
-export default function PhotoListItem({ imageSource, username, profile, location }) {
+export default function PhotoListItem({ photo }) {
+  const {
+    imageSource = '/placeholder-image.jpg',
+    username = 'Anonymous',
+    profile = '/default-profile.jpg',
+    location = { city: 'Unknown', country: 'Unknown' }
+  } = photo || {};
+
   return (
     <article className="photo-list__item">
       <img 
