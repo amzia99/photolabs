@@ -1,11 +1,13 @@
+import React from 'react';
+
 import PhotoListItem from './components/PhotoListItem';
+import './App.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <PhotoListItem />
-    </div>
-  );
-}
 
-export default App;
+const App = () => (
+  <div className="App">
+    <PhotoListItem/>
+  </div>
+)
+
+export default App
