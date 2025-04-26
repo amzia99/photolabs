@@ -1,13 +1,11 @@
 import PhotoListItem from './components/PhotoListItem';
-import './App.scss';
 
-// Note: Rendering a single component to build components in isolation
-const App = () => {
+function App() {
   return (
     <div className="App">
-      <PhotoListItem/>
+      <PhotoListItem />
     </div>
   );
-};
+}
 
 export default App;
