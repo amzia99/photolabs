@@ -1,5 +1,6 @@
 import React from 'react';
 import PhotoList from './components/PhotoList';
+import TopicList from './components/TopicList';
 import './App.scss';
 
 // Sample photo data for 3 phootos
@@ -39,6 +40,7 @@ const samplePhotos = [
 const App = () => {
   return (
     <div className="App">
+      <TopicList />
       <PhotoList photos={samplePhotos} />
     </div>
   );
