@@ -1,5 +1,5 @@
 import React from 'react';
-import PhotoListItem from './components/PhotoListItem';
+import PhotoList from './components/PhotoList';
 import './App.scss';
 
 // Sample photo data for 3 phootos
@@ -36,15 +36,12 @@ const samplePhotos = [
   }
 ];
 
-const App = () => (
-  <div className="App">
-    {samplePhotos.map(photo => (
-      <PhotoListItem 
-        key={photo.id}
-        photo={photo}
-      />
-    ))}
-  </div>
-);
+const App = () => {
+  return (
+    <div className="App">
+      <PhotoList photos={samplePhotos} />
+    </div>
+  );
+};
 
 export default App;
