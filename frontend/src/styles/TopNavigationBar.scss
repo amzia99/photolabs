@@ -2,19 +2,29 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 8px;
   align-items: center;
-  -webkit-box-shadow: 0 4px 6px -6px #222;
-  -moz-box-shadow: 0 4px 6px -6px #222;
-  box-shadow: 0 4px 6px -6px #222;
+  padding: 0 24px;
+  background-color: white;
   height: 72px;
+  box-shadow: 0 4px 6px -6px #222;
 }
 
 .top-nav-bar__logo {
-  text-decoration: overline;
   font-weight: 500;
   font-size: 24px;
   color: #111;
-  text-underline-position: auto;
+  text-decoration: none;
+  &:hover {
+    text-decoration: overline;
+  }
+}
+
+.top-nav-bar__content {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.top-nav-bar__favorites {
   margin-left: 24px;
 }
