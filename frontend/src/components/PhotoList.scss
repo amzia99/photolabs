@@ -1,0 +1,13 @@
+.photo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.photo-list__item {
+  margin: 0;
+  padding: 0;
+}
