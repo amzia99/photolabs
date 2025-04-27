@@ -18,7 +18,7 @@ export default function PhotoListItem({ photo }) {
           src={imageSource}
           alt={`Photo by ${username}`}
         />
-        <PhotoFavButton />
+        <PhotoFavButton photo={photo} />
       </div>
       <div className="photo-list__user-details">
         <img 

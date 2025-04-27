@@ -8,7 +8,7 @@ const PhotoFavButton = () => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    setSelected(!selected);
+    setSelected(prevSelected => !prevSelected);
   };
   return (
     <div className="photo-list__fav-icon" onClick={handleClick}>
