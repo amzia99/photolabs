@@ -1,4 +1,5 @@
 import React from 'react';
+import PhotoFavButton from './PhotoFavButton';
 import './PhotoListItem.scss';
 
 export default function PhotoListItem({ photo }) {
@@ -11,11 +12,14 @@ export default function PhotoListItem({ photo }) {
 
   return (
     <article className="photo-list__item">
-      <img 
-        className="photo-list__image"
-        src={imageSource}
-        alt={`Photo by ${username}`}
-      />
+      <div className="photo-list__image-container">
+        <img 
+          className="photo-list__image"
+          src={imageSource}
+          alt={`Photo by ${username}`}
+        />
+        <PhotoFavButton />
+      </div>
       <div className="photo-list__user-details">
         <img 
           className="photo-list__user-profile"
