@@ -57,7 +57,7 @@ const PhotoList = ({ photos }) => {
   return (
     <ul className="photo-list">
       {photos.map((photo) => (
-        <li key={photo.id}>
+        <li key={photo.id} className="photo-list__item">
           <PhotoListItem photo={photo} />
         </li>
       ))}
