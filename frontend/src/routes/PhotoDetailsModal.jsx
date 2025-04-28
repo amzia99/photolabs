@@ -3,7 +3,7 @@ import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from '../components/PhotoFavButton';
 
-const PhotoDetailsModal = ({ isOpen, onClose, selectedPhoto, openModal, toggleFavourite }) => {
+const PhotoDetailsModal = ({ isOpen, onClose, selectedPhoto, openModal, toggleFavourite, favouritePhotos }) => {
   if (!isOpen || !selectedPhoto) return null;
   
   // debugging console log
