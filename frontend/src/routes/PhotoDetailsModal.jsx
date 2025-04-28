@@ -37,12 +37,18 @@ const PhotoDetailsModal = ({ isOpen, onClose, selectedPhoto, openModal, toggleFa
         </button>
         
         <div className="photo-details-modal__image-container">
-          <img 
-            className="photo-details-modal__image" 
-            src={imgSrc} 
-            alt={`Photo by ${userName}`} 
-          />
-        </div>
+       <img 
+        className="photo-details-modal__image" 
+        src={imgSrc} 
+        alt={`Photo by ${userName}`} 
+        />
+        <div className="photo-details-modal__fav-button">
+         <PhotoFavButton 
+          selected={favouritePhotos.includes(id)}
+          onClick={() => toggleFavourite(id)}
+         />
+      </div>
+    </div>
         
         <div className="photo-details-modal__user-details">
           <img 
