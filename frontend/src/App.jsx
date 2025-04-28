@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeRoute from './components/HomeRoute';
 import './App.scss';
+import photos from './mocks/photos';
 
 // Sample photo data
 const samplePhotos = [
@@ -39,7 +40,7 @@ const samplePhotos = [
 const App = () => {
   return (
     <div className="App">
-      <HomeRoute photos={samplePhotos} />
+      <HomeRoute photos={photos} />
     </div>
   );
 };
