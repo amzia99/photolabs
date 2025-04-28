@@ -53,7 +53,7 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = ({ photos, favouritePhotos, toggleFavourite }) => {
+const PhotoList = ({ photos, favouritePhotos, toggleFavourite, openModal }) => {
   return (
     <div className="photo-list">
       {photos.map((photo) => (
@@ -62,6 +62,7 @@ const PhotoList = ({ photos, favouritePhotos, toggleFavourite }) => {
             photo={photo} 
             isFavourite={favouritePhotos.includes(photo.id)}
             toggleFavourite={toggleFavourite}
+            openModal={openModal}
           />
         </div>
       ))}
