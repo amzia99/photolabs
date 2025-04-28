@@ -56,6 +56,31 @@ const PhotoDetailsModal = ({ isOpen, onClose, selectedPhoto }) => {
             </p>
           </div>
         </div>
+        {similar_photos && Object.keys(similar_photos).length > 0 && (
+          <div className="photo-details-modal__similar-photos">
+            <h3>Similar Photos</h3>
+            <div className="photo-details-modal__similar-photos-list">
+              {Object.values(similar_photos).map((photo) => (
+                <div 
+                  key={photo.id} 
+                  className="photo-details-modal__similar-photo"
+                  onClick={() => {
+                    // Close current modal and open new one with this photo
+                    onClose();
+                    setTimeout(() => openModal(photo), 10);
+                  }}
+                >
+                  <img 
+                    src={photo.urls.regular} 
+                    // add similar photos
+                    alt={`Similar photo from ${photo.user?.name || 'photographer'}`}
+                    className="photo-details-modal__similar-photo-img"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
