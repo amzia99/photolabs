@@ -20,10 +20,26 @@ const PhotoDetailsModal = ({ isOpen, onClose, selectedPhoto }) => {
   const userProfile = profile || (user && user.profile);
   const userLocation = location || {};
 
+  // Handle close button click
+  const handleCloseClick = () => {
+    onClose();
+  };
+
+  // Handle background click
+  const handleBackgroundClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
     <div className="photo-details-modal">
       <div className="photo-details-modal__content">
-        <button className="photo-details-modal__close-button" onClick={onClose}>
+        <button 
+          className="photo-details-modal__close-button" 
+          onClick={handleCloseClick}
+          aria-label="Close modal"
+        >
           <img src={closeSymbol} alt="close symbol" />
         </button>
         
