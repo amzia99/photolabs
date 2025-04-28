@@ -1,11 +1,11 @@
 import React from 'react';
 import '../styles/TopicListItem.scss';
 
-const TopicListItem = ({ label }) => {
+const TopicListItem = ({ label, onClick }) => {
   return (
-    <div className="topic-list__item">
+    <button className="topic-list__item" onClick={onClick}>
       <span>{label}</span>
-    </div>
+    </button>
   );
 };
 

@@ -3,7 +3,7 @@ import '../styles/TopNavigationBar.scss';
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
-const TopNavigationBar = ({ favouritePhotos }) => {
+const TopNavigationBar = ({ favouritePhotos, topics, fetchPhotosByTopic }) => {
   const isFavPhotoExist = favouritePhotos && favouritePhotos.length > 0;
   
   return (
