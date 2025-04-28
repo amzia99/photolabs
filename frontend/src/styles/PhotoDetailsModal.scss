@@ -120,16 +120,16 @@
     object-fit: cover;
     border-radius: 4px;
     cursor: pointer;
-
+    
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+  
   &__fav-button {
     position: absolute;
     top: 20px;
     left: 20px;
     z-index: 1001;
-    }
-    
-    &:hover {
-      opacity: 0.9;
-    }
   }
 }
