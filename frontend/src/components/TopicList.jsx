@@ -2,13 +2,19 @@ import React from 'react';
 import TopicListItem from './TopicListItem';
 import '../styles/TopicList.scss';
 
-const topics = ['Nature', 'Travel', 'People', 'Fashion', 'Animals'];
+const TopicList = ({ topics, fetchPhotosByTopic }) => {
+  const handleTopicClick = (topicId) => {
+    fetchPhotosByTopic(topicId); 
+  };
 
-const TopicList = () => {
   return (
     <div className="topic-list">
-      {topics.map((topic, index) => (
-        <TopicListItem key={index} label={topic} />
+      {topics.map((topic) => (
+        <TopicListItem 
+          key={topic.id} 
+          label={topic.title} 
+          onClick={() => handleTopicClick(topic.id)} 
+        />
       ))}
     </div>
   );
