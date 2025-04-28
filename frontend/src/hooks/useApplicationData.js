@@ -8,9 +8,9 @@ const CLOSE_MODAL = 'CLOSE_MODAL';
 const SET_PHOTOS = 'SET_PHOTOS';
 const SET_TOPICS = 'SET_TOPICS';
 const SET_LOADING = 'SET_LOADING';
+const SET_PHOTOS_BY_TOPIC = 'SET_PHOTOS_BY_TOPIC';
 
 
-// Reducer function
 // Reducer function
 function reducer(state, action) {
   switch (action.type) {
@@ -56,6 +56,8 @@ function reducer(state, action) {
         ...state,
         loading: action.payload
       };
+      case SET_PHOTOS_BY_TOPIC:
+        return {...state, photos: action.payload };
     default:
       throw new Error(`Unsupported action type: ${action.type}`);
   }
@@ -116,6 +118,7 @@ export default function useApplicationData() {
     state,
     toggleFavourite,
     openModal,
-    closeModal
+    closeModal,
+    fetchPhotosByTopic
   };
 }
