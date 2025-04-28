@@ -2,6 +2,7 @@ import React from 'react';
 import HomeRoute from './components/HomeRoute';
 import './App.scss';
 import photos from './mocks/photos';
+import useApplicationData from './hooks/useApplicationData';
 
 // Sample photo data
 const samplePhotos = [
