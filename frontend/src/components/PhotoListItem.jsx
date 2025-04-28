@@ -2,8 +2,7 @@ import React from 'react';
 import PhotoFavButton from './PhotoFavButton';
 import '../styles/PhotoListItem.scss';
 
-export default function PhotoListItem({ photo, isFavourite, toggleFavourite }) {
-  
+export default function PhotoListItem({ photo, isFavourite, toggleFavourite, openModal }) {
   const {
     id,
     imageSource,
@@ -19,6 +18,10 @@ export default function PhotoListItem({ photo, isFavourite, toggleFavourite }) {
   const userProfile = profile || (user && user.profile);
   const userLocation = location || {};
 
+  const handleImageClick = () => {
+    openModal(photo);
+  };
+
   return (
     <article className="photo-list__item">
       <div className="photo-list__image-container">
@@ -26,6 +29,8 @@ export default function PhotoListItem({ photo, isFavourite, toggleFavourite }) {
           className="photo-list__image"
           src={imgSrc}
           alt={`Photo by ${userName}`}
+          onClick={handleImageClick}
+          style={{ cursor: 'pointer' }}
         />
         <div className="photo-list__fav-button">
           <PhotoFavButton 
