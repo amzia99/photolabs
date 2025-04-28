@@ -1,6 +1,6 @@
 import React from 'react';
 import PhotoFavButton from './PhotoFavButton';
-import './PhotoListItem.scss';
+import '../styles/PhotoListItem.scss';
 
 export default function PhotoListItem({ photo }) {
   const {
@@ -18,7 +18,9 @@ export default function PhotoListItem({ photo }) {
           src={imageSource}
           alt={`Photo by ${username}`}
         />
-        <PhotoFavButton photo={photo} />
+        <div className="photo-list__fav-button">
+          <PhotoFavButton photo={photo} />
+        </div>
       </div>
       <div className="photo-list__user-details">
         <img 
