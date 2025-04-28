@@ -54,6 +54,7 @@ const App = () => {
         isOpen={state.modalOpen}
         onClose={closeModal}
         selectedPhoto={state.selectedPhoto}
+        openModal={openModal}
       />
     </div>
   );
