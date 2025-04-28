@@ -1,13 +1,31 @@
 .photo-list {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 24px;
-  list-style-type: none;
+  justify-content: space-between;
+  list-style: none;
   margin: 0;
   padding: 0;
+  
+  &__item {
+    flex: 0 0 calc(33.333% - 16px);
+    margin-bottom: 24px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    border: 1px solid #E6E6E6;
+  }
 }
 
-.photo-list__item {
-  margin: 0;
-  padding: 0;
+@media (max-width: 992px) {
+  .photo-list__item {
+    flex: 0 0 calc(50% - 12px);
+  }
+}
+
+@media (max-width: 576px) {
+  .photo-list__item {
+    flex: 0 0 100%;
+  }
 }

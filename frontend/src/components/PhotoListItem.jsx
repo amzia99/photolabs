@@ -23,7 +23,7 @@ export default function PhotoListItem({ photo, isFavourite, toggleFavourite, ope
   };
 
   return (
-    <article className="photo-list__item">
+    <article className="photo-list__item-article">
       <div className="photo-list__image-container">
         <img 
           className="photo-list__image"
