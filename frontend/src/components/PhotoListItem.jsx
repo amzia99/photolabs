@@ -2,9 +2,10 @@ import React from 'react';
 import PhotoFavButton from './PhotoFavButton';
 import '../styles/PhotoListItem.scss';
 
-export default function PhotoListItem({ photo }) {
+export default function PhotoListItem({ photo, isFavourite, toggleFavourite }) {
   
   const {
+    id,
     imageSource,
     username,
     profile,
@@ -12,7 +13,6 @@ export default function PhotoListItem({ photo }) {
     urls,
     user
   } = photo || {};
-
 
   const imgSrc = imageSource || (urls && urls.full);
   const userName = username || (user && user.name);
@@ -28,7 +28,10 @@ export default function PhotoListItem({ photo }) {
           alt={`Photo by ${userName}`}
         />
         <div className="photo-list__fav-button">
-          <PhotoFavButton photo={photo} />
+          <PhotoFavButton 
+            selected={isFavourite}
+            onClick={() => toggleFavourite(id)}
+          />
         </div>
       </div>
       <div className="photo-list__user-details">
