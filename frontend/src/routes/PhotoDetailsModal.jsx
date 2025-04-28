@@ -1,8 +1,9 @@
 import React from 'react';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
+import PhotoFavButton from '../components/PhotoFavButton';
 
-const PhotoDetailsModal = ({ isOpen, onClose, selectedPhoto, openModal }) => {
+const PhotoDetailsModal = ({ isOpen, onClose, selectedPhoto, openModal, toggleFavourite }) => {
   if (!isOpen || !selectedPhoto) return null;
   
   // debugging console log
