@@ -1,9 +1,13 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
+
 
 // Action types
 const TOGGLE_FAVOURITE = 'TOGGLE_FAVOURITE';
 const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
+const SET_PHOTOS = 'SET_PHOTOS';
+const SET_LOADING = 'SET_LOADING';
+
 
 // Reducer function
 function reducer(state, action) {
@@ -35,6 +39,17 @@ function reducer(state, action) {
         ...state,
         modalOpen: false
       };
+      case SET_PHOTOS:
+      return {
+        ...state,
+        photos: action.payload,             
+        loading: false                      
+      };
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: action.payload           
+      };
     default:
       throw new Error(`Unsupported action type: ${action.type}`);
   }
@@ -44,7 +59,9 @@ export default function useApplicationData() {
   const initialState = {
     favouritePhotos: [],
     selectedPhoto: null,
-    modalOpen: false
+    modalOpen: false,
+    photos: [],
+    loading: true
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -66,19 +83,25 @@ export default function useApplicationData() {
   };
 
   // fetch photos from server
-  const fetchPhotos = async () => {
-    try {
-      const response = await fetch('http://localhost:8001/api/photos');
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch({ type: SET_LOADING, payload: true });
+      try {
+        const response = await fetch('http://localhost:8001/api/photos');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        dispatch({ type: SET_PHOTOS, payload: data });
+      } catch (error) {
+        console.error('Error fetching photos:', error);
+        dispatch({ type: SET_LOADING, payload: false });
       }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error fetching photos:', error);
-      return [];
-    }
-  };
+    };
+
+    fetchData();
+  }, []);
+
 
   return {
     state,
