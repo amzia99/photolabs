@@ -17,7 +17,7 @@ const samplePhotos = [
   {
     id: 2,
     imageSource: "/Image-2-Full.jpeg",
-    username: "Jane Example",
+    username: "John Example",
     profile: "/profile-1.jpg",
     location: {
       city: "Toronto",

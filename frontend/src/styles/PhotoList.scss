@@ -1,13 +1,26 @@
 .photo-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;                     // Space between items
-  justify-content: center;       // Centers the row of items
+  gap: 20px;
+  justify-content: space-between;
+  list-style: none;
   margin: 0;
   padding: 0;
+  
+  &__item {
+    flex: 0 0 calc(33.333% - 14px);
+    margin-bottom: 20px;
+  }
 }
 
-.photo-list__item {
-  flex: 0 1 calc(33.333% - 16px); // 3 items per row with spacing
-  box-sizing: border-box;
+@media (max-width: 992px) {
+  .photo-list__item {
+    flex: 0 0 calc(50% - 10px);
+  }
+}
+
+@media (max-width: 576px) {
+  .photo-list__item {
+    flex: 0 0 100%;
+  }
 }
