@@ -1,13 +1,17 @@
 import React from 'react';
-import TopNavigationBar from './TopNavigationBar';
-import PhotoList from './PhotoList';
+import TopNavigationBar from '../components/TopNavigationBar';
+import PhotoList from '../components/PhotoList';
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = (props) => {
+const HomeRoute = ({ photos, favouritePhotos, toggleFavourite }) => {
   return (
     <div className="home-route">
-      <TopNavigationBar />
-      <PhotoList photos={props.photos} />
+      <TopNavigationBar favouritePhotos={favouritePhotos} />
+      <PhotoList 
+        photos={photos} 
+        favouritePhotos={favouritePhotos}
+        toggleFavourite={toggleFavourite}
+      />
     </div>
   );
 };
