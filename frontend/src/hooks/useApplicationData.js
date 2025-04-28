@@ -1,47 +1,68 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 
-export default function useApplicationData() {
-  const [state, setState] = useState({
-    favouritePhotos: [],
-    selectedPhoto: null,
-    modalOpen: false
-  });
+// Action types
+const TOGGLE_FAVOURITE = 'TOGGLE_FAVOURITE';
+const OPEN_MODAL = 'OPEN_MODAL';
+const CLOSE_MODAL = 'CLOSE_MODAL';
 
-  // Toggle photo favorite status
-  const toggleFavourite = (photoId) => {
-    setState(prev => {
-      const updatedFavourites = [...prev.favouritePhotos];
+// Reducer function
+function reducer(state, action) {
+  switch (action.type) {
+    case TOGGLE_FAVOURITE: {
+      const photoId = action.payload;
+      const updatedFavourites = [...state.favouritePhotos];
       
       if (updatedFavourites.includes(photoId)) {
         return {
-          ...prev,
+          ...state,
           favouritePhotos: updatedFavourites.filter(id => id !== photoId)
         };
       } else {
         return {
-          ...prev,
+          ...state,
           favouritePhotos: [...updatedFavourites, photoId]
         };
       }
-    });
+    }
+    case OPEN_MODAL:
+      return {
+        ...state,
+        selectedPhoto: action.payload,
+        modalOpen: true
+      };
+    case CLOSE_MODAL:
+      return {
+        ...state,
+        modalOpen: false
+      };
+    default:
+      throw new Error(`Unsupported action type: ${action.type}`);
+  }
+}
+
+export default function useApplicationData() {
+  const initialState = {
+    favouritePhotos: [],
+    selectedPhoto: null,
+    modalOpen: false
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  // Toggle photo favorite status
+  const toggleFavourite = (photoId) => {
+    dispatch({ type: TOGGLE_FAVOURITE, payload: photoId });
   };
 
   // Open modal with selected photo
   const openModal = (photo) => {
     console.log("Opening modal with photo:", photo);
-    setState(prev => ({
-      ...prev,
-      selectedPhoto: photo,
-      modalOpen: true
-    }));
+    dispatch({ type: OPEN_MODAL, payload: photo });
   };
 
-  // Close modal
+  // Close the modal
   const closeModal = () => {
-    setState(prev => ({
-      ...prev,
-      modalOpen: false
-    }));
+    dispatch({ type: CLOSE_MODAL });
   };
 
   return {
