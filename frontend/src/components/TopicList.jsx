@@ -2,7 +2,7 @@ import React from 'react';
 import TopicListItem from './TopicListItem';
 import '../styles/TopicList.scss';
 
-const topics = ['Nature', 'Travel', 'People'];
+const topics = ['Nature', 'Travel', 'People', 'Fashion', 'Animals'];
 
 const TopicList = () => {
   return (
