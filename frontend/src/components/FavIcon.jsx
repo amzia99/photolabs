@@ -1,4 +1,4 @@
-const FavIcon = ({ selected }) => {
+const FavIcon = ({ selected, displayAlert }) => {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path 
@@ -7,6 +7,9 @@ const FavIcon = ({ selected }) => {
         stroke="#C80000"
         strokeWidth="1"
       />
+      {displayAlert && (
+        <circle cx="21" cy="4" r="2.75" fill="#FFFF00" stroke="#C80000" strokeWidth="0.5"/>
+      )}
     </svg>
   );
 };
