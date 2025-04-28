@@ -2,12 +2,10 @@ import React from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-const PhotoFavButton = () => {
-  const [selected, setSelected] = React.useState(false);
-
+const PhotoFavButton = ({ selected, onClick }) => {
   const handleClick = (event) => {
     event.preventDefault();
-    setSelected(prevSelected => !prevSelected);
+    onClick();
   };
   
   return (
