@@ -39,9 +39,15 @@ const samplePhotos = [
 ];
 
 const App = () => {
+  const { state, toggleFavourite } = useApplicationData();
+
   return (
     <div className="App">
-      <HomeRoute photos={photos} />
+      <HomeRoute 
+        photos={photos} 
+        favouritePhotos={state.favouritePhotos}
+        toggleFavourite={toggleFavourite}
+      />
     </div>
   );
 };
