@@ -3,10 +3,10 @@ import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = ({ isOpen, onClose, selectedPhoto }) => {
-  if (!isOpen) return null;
-
-  //debugging
-  console.log('Selected Photo Deails:', selectedPhoto);
+  if (!isOpen || !selectedPhoto) return null;
+  
+  // debugging console log
+  console.log('Selected Photo Details:', selectedPhoto);
   
   const {
     id,
@@ -15,7 +15,8 @@ const PhotoDetailsModal = ({ isOpen, onClose, selectedPhoto }) => {
     profile,
     location,
     urls,
-    user
+    user,
+    similar_photos
   } = selectedPhoto || {};
 
   const imgSrc = imageSource || (urls && urls.full);
@@ -23,24 +24,12 @@ const PhotoDetailsModal = ({ isOpen, onClose, selectedPhoto }) => {
   const userProfile = profile || (user && user.profile);
   const userLocation = location || {};
 
-  // Handle close button click
-  const handleCloseClick = () => {
-    onClose();
-  };
-
-  // Handle background click
-  const handleBackgroundClick = (e) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
-
   return (
-    <div className="photo-details-modal">
+    <div className="photo-details-modal" onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div className="photo-details-modal__content">
         <button 
           className="photo-details-modal__close-button" 
-          onClick={handleCloseClick}
+          onClick={onClose}
           aria-label="Close modal"
         >
           <img src={closeSymbol} alt="close symbol" />

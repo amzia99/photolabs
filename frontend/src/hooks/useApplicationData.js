@@ -12,15 +12,12 @@ export default function useApplicationData() {
     setState(prev => {
       const updatedFavourites = [...prev.favouritePhotos];
       
-      // Remove favorited photo
       if (updatedFavourites.includes(photoId)) {
         return {
           ...prev,
           favouritePhotos: updatedFavourites.filter(id => id !== photoId)
         };
-      } 
-      // Or add to favorites
-      else {
+      } else {
         return {
           ...prev,
           favouritePhotos: [...updatedFavourites, photoId]
@@ -31,6 +28,7 @@ export default function useApplicationData() {
 
   // Open modal with selected photo
   const openModal = (photo) => {
+    console.log("Opening modal with photo:", photo);
     setState(prev => ({
       ...prev,
       selectedPhoto: photo,
