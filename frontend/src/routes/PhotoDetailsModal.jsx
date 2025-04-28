@@ -4,6 +4,9 @@ import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = ({ isOpen, onClose, selectedPhoto }) => {
   if (!isOpen) return null;
+
+  //debugging
+  console.log('Selected Photo Deails:', selectedPhoto);
   
   const {
     id,
