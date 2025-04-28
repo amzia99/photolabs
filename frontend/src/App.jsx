@@ -1,5 +1,6 @@
 import React from 'react';
 import HomeRoute from './routes/HomeRoute';
+import PhotoDetailsModal from './routes/PhotoDetailsModal';
 import './App.scss';
 import photos from './mocks/photos';
 import useApplicationData from './hooks/useApplicationData';
@@ -39,7 +40,7 @@ const samplePhotos = [
 ];
 
 const App = () => {
-  const { state, toggleFavourite } = useApplicationData();
+  const { state, toggleFavourite, openModal, closeModal } = useApplicationData();
 
   return (
     <div className="App">
@@ -47,6 +48,12 @@ const App = () => {
         photos={photos} 
         favouritePhotos={state.favouritePhotos}
         toggleFavourite={toggleFavourite}
+        openModal={openModal}
+      />
+      <PhotoDetailsModal 
+        isOpen={state.modalOpen}
+        onClose={closeModal}
+        selectedPhoto={state.selectedPhoto}
       />
     </div>
   );
