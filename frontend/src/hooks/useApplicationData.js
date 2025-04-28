@@ -65,6 +65,21 @@ export default function useApplicationData() {
     dispatch({ type: CLOSE_MODAL });
   };
 
+  // fetch photos from server
+  const fetchPhotos = async () => {
+    try {
+      const response = await fetch('http://localhost:8001/api/photos');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching photos:', error);
+      return [];
+    }
+  };
+
   return {
     state,
     toggleFavourite,
