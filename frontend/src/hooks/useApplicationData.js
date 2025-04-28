@@ -114,6 +114,23 @@ export default function useApplicationData() {
     fetchData();
   }, []);
 
+    // Fetch photos by topic
+    const fetchPhotosByTopic = async (topicId) => {
+      dispatch({ type: SET_LOADING, payload: true });
+      try {
+        const response = await fetch(`http://localhost:8001/api/topics/${topicId}/photos`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        dispatch({ type: SET_PHOTOS_BY_TOPIC, payload: data });
+        dispatch({ type: SET_LOADING, payload: false });
+      } catch (error) {
+        console.error('Error fetching photos by topic:', error);
+        dispatch({ type: SET_LOADING, payload: false });
+      }
+    };
+
   return {
     state,
     toggleFavourite,

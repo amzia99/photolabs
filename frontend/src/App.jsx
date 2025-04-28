@@ -5,7 +5,7 @@ import './App.scss';
 import useApplicationData from './hooks/useApplicationData';
 
 const App = () => {
-  const { state, toggleFavourite, openModal, closeModal } = useApplicationData();
+  const { state, toggleFavourite, openModal, closeModal, fetchPhotosByTopic } = useApplicationData();
 
   if (state.loading) {
     return <p>Loading...</p>;
@@ -19,6 +19,7 @@ const App = () => {
         favouritePhotos={state.favouritePhotos}
         toggleFavourite={toggleFavourite}
         openModal={openModal}
+        fetchPhotosByTopic={fetchPhotosByTopic} 
       />
       <PhotoDetailsModal 
         isOpen={state.modalOpen}
