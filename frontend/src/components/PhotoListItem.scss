@@ -1,7 +1,7 @@
 
 .photo-list {
   &__item {
-    background-color: white;
+    background-color: #FFFFFF;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
@@ -40,8 +40,9 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 12px;
     object-fit: cover;
+    border: 1px solid #E6E6E6;
   }
 
   &__user-info {
@@ -50,13 +51,14 @@
   }
 
   &__user-name {
-    font-weight: bold;
+    font-weight: 600;
     font-size: 14px;
     margin-bottom: 2px;
+    color: #2b2b2b;
   }
 
   &__user-location {
-    color: #777;
+    color: #555;
     font-size: 12px;
   }
 }
