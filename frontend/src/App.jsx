@@ -1,10 +1,8 @@
 import React from 'react';
-import TopNavigationBar from './components/TopNavigationBar';
-import PhotoList from './components/PhotoList';
-import TopicList from './components/TopicList';
+import HomeRoute from './components/HomeRoute';
 import './App.scss';
 
-// Sample photo data for 3 phootos
+// Sample photo data
 const samplePhotos = [
   {
     id: 1,
@@ -19,7 +17,7 @@ const samplePhotos = [
   {
     id: 2,
     imageSource: "/Image-2-Full.jpeg",
-    username: "Jane Doe",
+    username: "Jane Example",
     profile: "/profile-1.jpg",
     location: {
       city: "Toronto",
@@ -29,7 +27,7 @@ const samplePhotos = [
   {
     id: 3,
     imageSource: "/Image-3-Full.jpeg",
-    username: "Alex Smith",
+    username: "John Example",
     profile: "/profile-1.jpg",
     location: {
       city: "Vancouver",
@@ -41,8 +39,7 @@ const samplePhotos = [
 const App = () => {
   return (
     <div className="App">
-      <TopNavigationBar />
-      <PhotoList photos={samplePhotos} />
+      <HomeRoute photos={samplePhotos} />
     </div>
   );
 };

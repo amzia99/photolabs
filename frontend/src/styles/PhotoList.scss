@@ -1,14 +1,13 @@
 .photo-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  list-style: none;
+  gap: 16px;                     // Space between items
+  justify-content: center;       // Centers the row of items
   margin: 0;
   padding: 0;
 }
 
-.photo-list:after {
-  content: "";
-  flex: 0 1 30%;
-  margin: 5px;
+.photo-list__item {
+  flex: 0 1 calc(33.333% - 16px); // 3 items per row with spacing
+  box-sizing: border-box;
 }
