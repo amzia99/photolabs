@@ -6,16 +6,17 @@ const TOGGLE_FAVOURITE = 'TOGGLE_FAVOURITE';
 const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 const SET_PHOTOS = 'SET_PHOTOS';
+const SET_TOPICS = 'SET_TOPICS';
 const SET_LOADING = 'SET_LOADING';
 
 
+// Reducer function
 // Reducer function
 function reducer(state, action) {
   switch (action.type) {
     case TOGGLE_FAVOURITE: {
       const photoId = action.payload;
       const updatedFavourites = [...state.favouritePhotos];
-      
       if (updatedFavourites.includes(photoId)) {
         return {
           ...state,
@@ -39,16 +40,21 @@ function reducer(state, action) {
         ...state,
         modalOpen: false
       };
-      case SET_PHOTOS:
+    case SET_PHOTOS:
       return {
         ...state,
-        photos: action.payload,             
-        loading: false                      
+        photos: action.payload,
+        loading: false
+      };
+    case SET_TOPICS:
+      return {
+        ...state,
+        topics: action.payload
       };
     case SET_LOADING:
       return {
         ...state,
-        loading: action.payload           
+        loading: action.payload
       };
     default:
       throw new Error(`Unsupported action type: ${action.type}`);
@@ -61,47 +67,50 @@ export default function useApplicationData() {
     selectedPhoto: null,
     modalOpen: false,
     photos: [],
+    topics: [],
     loading: true
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  // Toggle photo favorite status
+// toggle favourite
   const toggleFavourite = (photoId) => {
     dispatch({ type: TOGGLE_FAVOURITE, payload: photoId });
   };
-
-  // Open modal with selected photo
+// open modal
   const openModal = (photo) => {
-    console.log("Opening modal with photo:", photo);
     dispatch({ type: OPEN_MODAL, payload: photo });
   };
-
-  // Close the modal
+// close modal
   const closeModal = () => {
     dispatch({ type: CLOSE_MODAL });
   };
 
-  // fetch photos from server
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: SET_LOADING, payload: true });
       try {
-        const response = await fetch('http://localhost:8001/api/photos');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+        const [photosResponse, topicsResponse] = await Promise.all([
+          fetch('http://localhost:8001/api/photos'),
+          fetch('http://localhost:8001/api/topics')
+        ]);
+
+        if (!photosResponse.ok || !topicsResponse.ok) {
+          throw new Error('Failed to fetch data');
         }
-        const data = await response.json();
-        dispatch({ type: SET_PHOTOS, payload: data });
+
+        const photosData = await photosResponse.json();
+        const topicsData = await topicsResponse.json();
+
+        dispatch({ type: SET_PHOTOS, payload: photosData });
+        dispatch({ type: SET_TOPICS, payload: topicsData });
       } catch (error) {
-        console.error('Error fetching photos:', error);
+        console.error('Error fetching data:', error);
         dispatch({ type: SET_LOADING, payload: false });
       }
     };
 
     fetchData();
   }, []);
-
 
   return {
     state,
