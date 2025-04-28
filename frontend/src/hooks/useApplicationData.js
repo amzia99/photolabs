@@ -1,25 +1,25 @@
 import { useState } from 'react';
 
 export default function useApplicationData() {
-
-  // tracking favorited photos
   const [state, setState] = useState({
     favouritePhotos: [],
+    selectedPhoto: null,
+    modalOpen: false
   });
 
-  // toggling photo favorite status
+  // Toggle photo favorite status
   const toggleFavourite = (photoId) => {
     setState(prev => {
       const updatedFavourites = [...prev.favouritePhotos];
       
-      // removing favorited photo
+      // Remove favorited photo
       if (updatedFavourites.includes(photoId)) {
         return {
           ...prev,
           favouritePhotos: updatedFavourites.filter(id => id !== photoId)
         };
       } 
-      // or add to favorites
+      // Or add to favorites
       else {
         return {
           ...prev,
@@ -29,8 +29,27 @@ export default function useApplicationData() {
     });
   };
 
+  // Open modal with selected photo
+  const openModal = (photo) => {
+    setState(prev => ({
+      ...prev,
+      selectedPhoto: photo,
+      modalOpen: true
+    }));
+  };
+
+  // Close modal
+  const closeModal = () => {
+    setState(prev => ({
+      ...prev,
+      modalOpen: false
+    }));
+  };
+
   return {
     state,
-    toggleFavourite
+    toggleFavourite,
+    openModal,
+    closeModal
   };
 }
