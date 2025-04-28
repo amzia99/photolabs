@@ -118,6 +118,13 @@
     object-fit: cover;
     border-radius: 4px;
     cursor: pointer;
+
+  &__fav-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    }
     
     &:hover {
       opacity: 0.9;

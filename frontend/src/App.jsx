@@ -55,6 +55,8 @@ const App = () => {
         onClose={closeModal}
         selectedPhoto={state.selectedPhoto}
         openModal={openModal}
+        toggleFavourite={toggleFavourite}
+        favouritePhotos={state.favouritePhotos}
       />
     </div>
   );
