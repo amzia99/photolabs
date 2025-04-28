@@ -21,7 +21,7 @@ PhotoLabs is a React-based single-page application (SPA) that allows users to vi
 
 1. Clone this repository
    ```bash
-   git clone <your-repo-url>
+   git clone git@github.com:amzia99/photolabs.git
    cd photolabs
 
 ### Backend Setup Instructions
