@@ -88,4 +88,39 @@
     color: #777;
     margin: 0;
   }
+
+  &__similar-photos {
+    margin-top: 20px;
+    
+    h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+  }
+  
+  &__similar-photos-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  &__similar-photo {
+    flex: 0 0 calc(50% - 5px);
+    
+    @media (min-width: 768px) {
+      flex: 0 0 calc(25% - 8px);
+    }
+  }
+  
+  &__similar-photo-img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    &:hover {
+      opacity: 0.9;
+    }
+  }
 }
